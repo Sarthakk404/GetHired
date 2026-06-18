@@ -5,187 +5,143 @@
 <h1 align="center">⚡ GetHired</h1>
 
 <p align="center">
-  <b>Your Ultimate Job Application Command Center</b>
+  <b>Job Application Tracker</b>
   <br />
-  Track · Manage · Analyze · Conquer
+  Track · Manage · Analyze
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/FastAPI-0.137-009688?style=flat-square&logo=fastapi" alt="FastAPI" />
-  <img src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react" alt="React" />
-  <img src="https://img.shields.io/badge/TypeScript-6-3178C6?style=flat-square&logo=typescript" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite" alt="Vite" />
-  <img src="https://img.shields.io/badge/Tailwind-4-38B2AC?style=flat-square&logo=tailwindcss" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/SQLAlchemy-2.0-4479A1?style=flat-square" alt="SQLAlchemy" />
   <img src="https://img.shields.io/badge/PostgreSQL-Neon-4169E1?style=flat-square&logo=postgresql" alt="PostgreSQL" />
+  <img src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react" alt="React" />
+  <img src="https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite" alt="Vite" />
+  <img src="https://img.shields.io/badge/Tailwind-4-38B2AC?style=flat-square&logo=tailwindcss" alt="Tailwind" />
   <img src="https://img.shields.io/badge/Framer_Motion-12-0055FF?style=flat-square&logo=framer" alt="Framer Motion" />
-  <img src="https://img.shields.io/badge/shadcn/ui-Radix-000000?style=flat-square" alt="shadcn/ui" />
 </p>
 
 ---
 
-## 🚀 The Ultimate Job Search OS
+## 📋 Overview
 
-**GetHired** isn't just another job tracker — it's a **battle-tested command center** designed for serious candidates who want data-driven control over their job search. Built with a **luxury dark glassmorphism** aesthetic inspired by Linear, Vercel, and Stripe Dashboard.
-
-> ✨ Because your job search deserves the same polish as the products you'll build.
+GetHired is a full-stack job application tracker built with **FastAPI** on the backend and **React** on the frontend. It helps you manage job applications, track their status through the pipeline, and gain insights through analytics.
 
 ---
 
-## 👑 What Makes It Elite
+## 🖥 Backend — FastAPI + PostgreSQL
 
-| 🔥 Feature | 💎 What It Does |
+### Tech Stack
+
+| Layer | Technology |
 |---|---|
-| **Glassmorphism UI** | Premium dark theme with blur effects, glow accents, and smooth gradients |
-| **Smooth Animations** | Every card, row, and page transitions like butter with Framer Motion |
-| **Interactive Analytics** | Real-time pie charts, bar charts, and animated progress bars — powered by Recharts |
-| **Battle-Ready Tables** | Search, multi-filter, sort, pagination, and bulk actions at your fingertips |
-| **Zod Validation** | Bulletproof forms with instant error feedback — zero bad data gets through |
-| **Toast Notifications** | Gorgeous sliding toasts for every success, error, and warning |
-| **Loading Skeletons** | Pulse-animated placeholders that make waiting feel instant |
-| **Responsive Core** | Desktop-first perfection, built for the modern workflow |
+| Framework | **FastAPI 0.137** |
+| ORM | **SQLAlchemy 2.0** |
+| Database | **PostgreSQL** (Neon serverless) |
+| Validation | **Pydantic v2** |
+| Server | **Uvicorn** |
 
----
+### API Endpoints
 
-## 🧠 Tech Stack That Slaps
-
-### 🖥 Backend — *FastAPI Excellence*
-
-| Layer | Technology | Why It's There |
+| Method | Endpoint | Description |
 |---|---|---|
-| Framework | **FastAPI 0.137** | Async Python, auto-docs, blistering speed |
-| ORM | **SQLAlchemy 2.0** | Battle-proven, type-safe database wizardry |
-| Database | **PostgreSQL on Neon** | Serverless, auto-scaling, always on |
-| Validation | **Pydantic v2** | Zero-effort schema enforcement |
+| `GET` | `/` | Health check |
+| `POST` | `/JOBS/Create_Job` | Create a job application |
+| `GET` | `/JOBS/Read_Jobs` | List all job applications |
+| `GET` | `/JOBS/Read_Job/{id}` | Get a single job by ID |
+| `PUT` | `/JOBS/Update_Job/{id}` | Update a job application |
+| `DELETE` | `/JOBS/Delete_Job/{id}` | Delete a job application |
+| `GET` | `/JOBS/Analytics` | Get aggregate stats (total, offers, interviews, rates) |
 
-### 🎨 Frontend — *React Perfection*
+### Database Schema
 
-| Layer | Technology | Why It's There |
+**Table: `jobs`**
+
+| Column | Type | Notes |
 |---|---|---|
-| Framework | **React 19** | Latest and greatest, blazingly fast |
-| Language | **TypeScript 6** | Strict typing, zero surprises |
-| Build Tool | **Vite 8** | Sub-second HMR, instant builds |
-| Styling | **Tailwind CSS v4** | Utility-first, infinitely composable |
-| Animation | **Framer Motion 12** | Buttery smooth, production-grade motion |
-| UI Kit | **shadcn/ui + Radix** | Accessible headless primitives, gorgeous out of the box |
-| Forms | **React Hook Form + Zod** | Performant, validated, developer-friendly |
-| Charts | **Recharts** | Declarative, responsive, beautiful |
-| HTTP | **Axios** | Interceptors, error handling, clean API layer |
-| Icons | **Lucide React** | Crisp, consistent, comprehensive icon set |
+| `Id` | `INTEGER PK` | Auto-increment |
+| `Company` | `VARCHAR(100)` | |
+| `Position` | `VARCHAR(100)` | |
+| `Company_Location` | `VARCHAR(100)` | |
+| `Application_Date` | `DATE` | |
+| `Status` | `VARCHAR(100)` | Enum: Applied, Online Assessment, Interview Scheduled, Interviewing, Rejected, Accepted |
+| `Job_Type` | `VARCHAR(100)` | Enum: Full Time, Part Time, Internship, Contract |
+| `Work_Mode` | `VARCHAR(100)` | Enum: Remote, On-site, Hybrid |
+| `Job_URL` | `VARCHAR(200)` | Nullable |
+| `Notes` | `VARCHAR(500)` | Nullable |
 
----
-
-## 🎯 Features That Deliver
-
-### 📊 Dashboard
-- **Live stat cards** — Total apps, interviews, offers, rejections at a glance
-- **Status breakdown** — Animated progress bars for every pipeline stage
-- **Response metrics** — Offer rate, interview rate, response rate, rejection rate
-- **Recent activity feed** — Latest applications and offers, always in view
-
-### 📋 Jobs Table
-- **Full CRUD** — Create, read, update, delete with instant toast feedback
-- **Smart search** — Fuzzy match across company, position, and location
-- **Triple filter** — Status, employment type, and work mode dropdowns
-- **Sortable columns** — Click any header to sort asc/desc
-- **Paginated** — 10 per page with clean pagination controls
-- **Row actions** — Edit, delete, and open job URL from each row
-- **Empty states** — Beautiful zero-state with CTA to create your first job
-
-### ✏️ Smart Forms
-- **Zod validation** — Required fields, URL validation, error messages that actually help
-- **Dropdown selects** — Status, Job Type, Work Mode — all matching backend enums
-- **Date picker** — Native date input pre-filled with today
-- **Loading states** — Submit button shows spinner, form disables during save
-- **Prefilled edit** — Update form loads existing data, ready to modify
-
-### 📈 Analytics Engine
-- **Status distribution** — Interactive donut chart (Recharts PieChart)
-- **Employment type breakdown** — Visualize Full Time vs Contract vs Internship
-- **Monthly trends** — Stacked bar chart showing Applied → Interviewing → Accepted → Rejected over time
-- **Performance metrics** — Animated gradient progress bars for:
-  - 🎯 Interview Rate
-  - 💰 Offer Rate
-  - 📈 Success Rate
-  - ⚡ Response Rate
-
-### ⚙️ Settings
-- **Theme preference** — Dark mode (the only way 😎)
-- **Notification toggles** — Email, reminders, interview alerts
-- **API status** — Live connection indicator
-- **Danger zone** — Clear all data (with safety confirmation)
-
----
-
-## 🏗 Architecture at a Glance
+### Project Structure
 
 ```
-GetHired/
-├── app/
-│   ├── main.py                 ⚡ FastAPI entry point
-│   ├── database.py             🗄 DB engine, session, Base
-│   ├── models.py               🧱 SQLAlchemy Job model
-│   ├── schemas.py              📋 Pydantic schemas & enums
-│   └── routers/
-│       └── router.py           🛣 All 6 REST endpoints
-├── frontend/
-│   └── src/
-│       ├── components/
-│       │   ├── layout/         🧩 Sidebar, DashboardLayout
-│       │   ├── shared/         💎 StatCard, AnimatedCard, EmptyState, Skeleton
-│       │   └── ui/             🎨 Button, Input, Select, Card, Dialog, Toast, etc.
-│       ├── hooks/              🪝 useToast
-│       ├── lib/                🔌 Axios client, cn() utility
-│       ├── pages/              📄 Dashboard, JobsTable, CreateJob, UpdateJob, Analytics, Settings
-│       └── types/              📐 TS interfaces, constants, color maps
-├── .env                        🔑 Database connection
-└── requirements.txt            📦 Python dependencies
+app/
+├── main.py              # FastAPI app entry, CORS, router mount
+├── database.py          # Engine, session, Base declarative
+├── models.py            # SQLAlchemy Jobs model
+├── schemas.py           # Pydantic models + enums (Status, Job_Type, Work_Mode)
+└── routers/
+    └── router.py        # All 7 endpoints with DB logic
 ```
 
----
-
-## 🛣 API Reference
-
-| Method | Endpoint | Description | Response |
-|---|---|---|---|
-| `GET` | `/` | Health check | `{ "Message": "Hello World" }` |
-| `POST` | `/JOBS/Create_Job` | Create a job application | `Job` object |
-| `GET` | `/JOBS/Read_Jobs` | List all jobs | `[Job]` array |
-| `GET` | `/JOBS/Read_Job/{id}` | Get a single job | `Job` object |
-| `PUT` | `/JOBS/Update_Job/{id}` | Update a job | `Job` object |
-| `DELETE` | `/JOBS/Delete_Job/{id}` | Delete a job | `{ "message": "deleted" }` |
-| `GET` | `/JOBS/Analytics` | Get aggregate stats | `{ Total_Jobs, Offers, Interviews, Offer_Rate, Interview_Rate }` |
-
----
-
-## 🚦 Quick Start
-
-### Prerequisites
-- Python 3.11+
-- Node.js 22+
-- A PostgreSQL database (Neon recommended)
-
-### 1️⃣ Backend Setup
+### Running the Backend
 
 ```bash
-# Clone & enter
-git clone <repo-url> && cd GetHired
-
-# Virtual environment
 python -m venv .venv
-source .venv/bin/activate  # macOS/Linux
-# .venv\Scripts\activate   # Windows
+.venv\Scripts\activate   # Windows
+# source .venv/bin/activate  # macOS/Linux
 
-# Install
 pip install -r requirements.txt
 
-# Configure
+# Configure .env with your database URL
 echo 'DATABASE_URL="postgresql://user:pass@host/db"' > .env
 
-# Launch
 uvicorn app.main:app --reload
 ```
 
-### 2️⃣ Frontend Setup
+The API docs are available at `http://localhost:8000/docs`.
+
+---
+
+## 🎨 Frontend — React + Vite
+
+### Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | **React 19** |
+| Language | **JavaScript (JSX)** |
+| Build Tool | **Vite 8** |
+| Styling | **Tailwind CSS v4** |
+| Animation | **Framer Motion 12** |
+| UI Components | **shadcn/ui** (Radix primitives) |
+| Forms | **React Hook Form + Zod** |
+| Charts | **Recharts** |
+| HTTP | **Axios** |
+| Icons | **Lucide React** |
+
+### Pages
+
+- **Dashboard** — Overview with stat cards, status breakdown bars, recent applications, latest offers
+- **Jobs Table** — Full CRUD with search, multi-filter (status/type/mode), sortable columns, pagination
+- **Create Job** — Validated form with dropdowns for all enum fields
+- **Edit Job** — Prefilled form for updating existing entries
+- **Analytics** — Pie charts (status & type distribution), stacked bar chart (monthly trends), performance metrics with animated progress bars
+- **Settings** — Theme, notification toggles, API connection status
+
+### Project Structure
+
+```
+frontend/src/
+├── components/
+│   ├── layout/          # Sidebar, DashboardLayout
+│   ├── shared/          # StatCard, AnimatedCard, EmptyState, LoadingSkeleton
+│   └── ui/              # Button, Input, Select, Card, Dialog, Toast, Badge, etc.
+├── hooks/               # useToast
+├── lib/                 # Axios client, constants, utilities
+├── pages/               # Dashboard, JobsTable, CreateJob, UpdateJob, Analytics, Settings
+├── App.jsx              # Router setup
+└── main.jsx             # Entry point
+```
+
+### Running the Frontend
 
 ```bash
 cd frontend
@@ -193,34 +149,75 @@ npm install
 npm run dev
 ```
 
-The Vite dev server auto-proxies `/JOBS/*` to `http://localhost:8000`.
-
-### 3️⃣ Open
-
-**→ http://localhost:5173** — Welcome to your new job search command center.
+Opens at `http://localhost:5173`. The Vite dev server proxies `/JOBS/*` requests to the backend at `http://localhost:8000`.
 
 ---
 
-## 🧬 Job Schema
+## 🧬 Data Flow
 
-| Field | Type | Options |
-|---|---|---|
-| `Status` | enum | `Applied`, `Online Assessment`, `Interview Scheduled`, `Interviewing`, `Rejected`, `Accepted` |
-| `Job_Type` | enum | `Full Time`, `Part Time`, `Internship`, `Contract` |
-| `Work_Mode` | enum | `Remote`, `On-site`, `Hybrid` |
-| `Application_Date` | date | `YYYY-MM-DD` |
-| `Job_URL` | string | Link to posting (optional) |
-| `Notes` | text | Free text up to 500 chars (optional) |
+```
+User Action → React Component → Axios → FastAPI Endpoint → SQLAlchemy → PostgreSQL
+                  ↕                                      ↕
+           Recharts (charts)                     Pydantic (validation)
+           Framer Motion (UI)                    Enum (status/type/mode)
+```
 
 ---
 
-## 🤝 Contributing
+## 🚦 Quick Start
 
-PRs are welcome. Keep the glassmorphism dream alive.
+### Prerequisites
+
+- Python 3.11+
+- Node.js 22+
+- PostgreSQL database (or [Neon](https://neon.tech) connection string)
+
+### 1. Backend
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+echo 'DATABASE_URL="postgresql://..."' > .env
+uvicorn app.main:app --reload
+```
+
+### 2. Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+### 3. Open
+
+**→ http://localhost:5173**
 
 ---
 
-<p align="center">
-  Made with ❤️ and an unhealthy amount of caffeine<br/>
-  <sub>Built for job seekers who refuse to settle.</sub>
-</p>
+## 📦 Dependencies
+
+### Backend (`requirements.txt`)
+
+| Package | Version |
+|---|---|
+| `fastapi` | 0.137.1 |
+| `uvicorn` | 0.49.0 |
+| `SQLAlchemy` | 2.0.51 |
+| `pydantic` | 2.13.4 |
+| `python-dotenv` | 1.2.2 |
+
+### Frontend (`package.json`)
+
+| Package | Purpose |
+|---|---|
+| `react` / `react-dom` | UI framework |
+| `react-router-dom` | Client-side routing |
+| `axios` | HTTP client |
+| `framer-motion` | Animations |
+| `react-hook-form` + `zod` | Form validation |
+| `recharts` | Charts |
+| `lucide-react` | Icons |
+| `tailwindcss` | Styling |
+| `@radix-ui/*` | Accessible UI primitives |
