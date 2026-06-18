@@ -14,8 +14,7 @@ models.Base.metadata.create_all(bind=engine)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:3000",  # React
-        "http://localhost:5173",  # Vite
+        "https://get-hired-alpha.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
