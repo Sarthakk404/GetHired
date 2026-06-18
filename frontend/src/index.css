@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #09090B;
+  --color-surface: #18181B;
+  --color-surface-hover: #27272A;
+  --color-border: #27272A;
+  --color-primary: #7C3AED;
+  --color-primary-hover: #6D28D9;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: #2563EB;
+  --color-secondary-hover: #1D4ED8;
+  --color-accent: #06B6D4;
+  --color-accent-hover: #0891B2;
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-muted: #71717A;
+  --color-muted-foreground: #A1A1AA;
+  --color-card: #18181B;
+  --color-card-hover: #1f1f23;
+  --color-ring: #7C3AED;
+  --color-sidebar: #0D0D10;
+  --color-sidebar-hover: #18181B;
+  --color-sidebar-active: rgba(124, 58, 237, 0.12);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #27272A transparent;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #09090B;
+  color: #FAFAFA;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(24, 24, 27, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(39, 39, 42, 0.5);
+  }
+
+  .glass-hover {
+    background: rgba(24, 24, 27, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(124, 58, 237, 0.2);
+  }
+
+  .card-gradient {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(37, 99, 235, 0.05));
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #7C3AED, #2563EB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-accent {
+    background: linear-gradient(135deg, #7C3AED, #06B6D4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow {
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.15);
+  }
+
+  .glow-lg {
+    box-shadow: 0 0 40px rgba(124, 58, 237, 0.1);
+  }
+}
